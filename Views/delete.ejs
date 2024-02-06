@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Blog</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #dc3545; /* Bootstrap's danger color */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #c82333; /* Darker shade for hover */
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('Components/header.ejs'); %>
+    
+    <form action="/deleteblog" method="post">
+        <table>
+            <tr>
+                <td><label for="blogtitle">Blog Title</label></td>
+                <td><input type="text" id="blogtitle" name="blogtitle" required></td>
+            </tr>
+            <tr>
+                <td><label for="blogauthor">Blog Author</label></td>
+                <td><input type="text" id="blogauthor" name="blogauthor" required></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Delete Blog"></td>
+            </tr>
+        </table>
+    </form>
+    
+    <%- include('Components/footer.ejs'); %>
+</body>
+
+</html>

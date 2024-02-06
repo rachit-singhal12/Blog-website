@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Blog</title>
+    <style>
+        .title {
+    text-align: center;
+    padding: 10px;
+    font-size: 24px; /* Larger font size */
+    font-family: 'Arial', sans-serif; /* Font family */
+    font-weight: bold; /* Bold text */
+    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 20px; /* Some spacing at the bottom */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Box shadow for depth */
+}
+.content {
+    color: #333; /* Dark text color */
+    background-color: #f8f8f8; /* Light background color */
+    padding: 15px;
+    font-size: 18px; /* Moderate font size */
+    font-family: 'Helvetica', sans-serif; /* Font family */
+    line-height: 1.6; /* Line height for better readability */
+    border: 1px solid #ddd; /* Border for separation */
+    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 20px; /* Some spacing at the bottom */
+}
+
+.author {
+    font-size: 12px;
+    color: #555; /* Slightly darker text color */
+    font-style: italic; /* Italics for author name */
+    margin-top: 5px; /* Top margin for separation */
+}
+
+
+        .mains {
+            display: inline-block;
+            width: 48%; /* Adjust the width as needed */
+            margin-right: 1%; /* Adjust the margin between divs as needed */
+            vertical-align: top; /* Align the divs at the top */
+            box-sizing: border-box; /* Include padding and border in the width */
+        }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        form {
+            text-align : center;
+            max-width: 200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        p {
+            margin: 0 0 1rem;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            form {
+                max-width: 90%;
+                text-align : center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('Components/header.ejs'); %>
+    
+    <% blogPosts.forEach((blogPost) => { %>
+        <div style="background-color: white; padding: 1rem; margin: 1rem 0; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 8px;">
+            <p class="title"><%= blogPost.title %></p>
+            <p class="content"><%= blogPost.content %></p>
+            <p class="author"><%= blogPost.author %></p>
+        </div>
+    <% }); %>
+    <div class="mains">
+        <form action="/submit" method="post">
+            <input type="submit" value="Create Post">
+        </form>
+
+    </div>
+    <div class="mains">
+        <form action="/delete" method="post">
+            <input type="submit" value="Delete Blog">
+        </form>
+    </div>
+    <%- include('Components/footer.ejs'); %>
+</body>
+
+</html>
