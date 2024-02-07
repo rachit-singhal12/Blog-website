@@ -37,6 +37,28 @@ app.post("/deleteblog",(req,res)=>{
   res.render("index.ejs",{blogPosts:blogPosts});
 })
 
+app.post("/updateblog",(req,res)=>{
+  var title = req.body.blogtitle;
+  var author = req.body.blogauthor;
+  var content = req.body.blogcontent;
+
+  var indexToUpdate = blogPosts.findIndex(blogPost => blogPost.title === title && blogPost.author === author);
+
+  if (indexToUpdate !== -1) {
+      blogPosts[indexToUpdate].title = title;
+      blogPosts[indexToUpdate].author = author;
+      blogPosts[indexToUpdate].content = content;
+      
+      res.render("index.ejs", { blogPosts: blogPosts });
+  } else {
+      res.status(404).send("Blog post not found.");
+  }
+})
+
+app.post("/update",(req,res)=>{
+  res.render("update.ejs",{blogPosts:blogPosts});
+});
+
 app.listen(port,()=>{
     console.log(`server running on ${port}`);
 })

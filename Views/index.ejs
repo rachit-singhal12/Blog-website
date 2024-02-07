@@ -88,14 +88,6 @@
 
 <body>
     <%- include('Components/header.ejs'); %>
-    
-    <% blogPosts.forEach((blogPost) => { %>
-        <div style="background-color: white; padding: 1rem; margin: 1rem 0; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 8px;">
-            <p class="title"><%= blogPost.title %></p>
-            <p class="content"><%= blogPost.content %></p>
-            <p class="author"><%= blogPost.author %></p>
-        </div>
-    <% }); %>
     <div class="mains">
         <form action="/submit" method="post">
             <input type="submit" value="Create Post">
@@ -103,9 +95,30 @@
 
     </div>
     <div class="mains">
+        <form action="/update" method="post">
+            <input type="submit" value="Update Post">
+        </form>
+
+    </div>
+    <div class="mains">
+        <form action="#ids">
+            <input type="submit" value="Checkout Post">
+        </form>
+
+    </div>
+    <div class="mains">
         <form action="/delete" method="post">
             <input type="submit" value="Delete Blog">
         </form>
+    </div>
+    <div id="ids">
+    <% blogPosts.forEach((blogPost) => { %>
+        <div style="background-color: white; padding: 1rem; margin: 1rem 0; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 8px;">
+            <p class="title"><%= blogPost.title %></p>
+            <p class="content"><%= blogPost.content %></p>
+            <p class="author"><%= blogPost.author %></p>
+        </div>
+    <% }); %>
     </div>
     <%- include('Components/footer.ejs'); %>
 </body>
